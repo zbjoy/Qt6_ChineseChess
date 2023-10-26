@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/checkmate.mp3</file>
+        <file>res/eat.mp3</file>
+        <file>res/MainExit.png</file>
+        <file>res/MainScene.jpg</file>
+        <file>res/MainStart.png</file>
+        <file>res/move.mp3</file>
+        <file>res/PlayScene_River.png</file>
+        <file>res/RedWin.png</file>
+        <file>res/Start1.jpg</file>
+        <file>res/Start2.jpg</file>
+        <file>res/WindowIcon.png</file>
+    </qresource>
+</RCC>
