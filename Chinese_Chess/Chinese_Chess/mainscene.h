@@ -43,18 +43,15 @@ public:
 
     void debugChessMap();
 
-    void saveChessMap();
-
-    void infoChessMap();
-
     ChessMap chessMap;
 
     //Chess ChessMap[ROW][COL];
-    QString debug;
+    QString debug[ROW * COL];
 
     ~MainScene();
 
 private:
     Ui::MainScene *ui;
+
 };
 #endif // MAINSCENE_H

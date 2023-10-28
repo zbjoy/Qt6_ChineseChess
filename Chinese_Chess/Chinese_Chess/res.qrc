@@ -11,5 +11,12 @@
         <file>res/Start1.jpg</file>
         <file>res/Start2.jpg</file>
         <file>res/WindowIcon.png</file>
+        <file>res/Exit1.jpg</file>
+        <file>res/Exit2.jpg</file>
+        <file>res/Again1.jpg</file>
+        <file>res/Again2.jpg</file>
+        <file>res/Back1.jpg</file>
+        <file>res/Back2.jpg</file>
+        <file>res/deadlyStrike.mp3</file>
     </qresource>
 </RCC>

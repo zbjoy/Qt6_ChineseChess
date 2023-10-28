@@ -1,5 +1,7 @@
 #include "chess.h"
 
+#include <iostream>
+
 Chess::Chess()
 {
     type = 0;
@@ -7,6 +9,12 @@ Chess::Chess()
 }
 
 ChessMap::ChessMap()
+{
+    iniChessMap();
+
+}
+
+void ChessMap::iniChessMap()
 {
     for (int i = 0; i < ROW; i++)
     {
@@ -96,5 +104,72 @@ ChessMap::ChessMap()
             }
 
         }
+    }
+
+    Player = true;
+
+    isWin = 0;
+}
+
+void ChessMap::saveChessMap()
+{
+    QFile file("ChessMap.txt");
+    if(!file.open(QFile::WriteOnly))
+    {
+        return;
+    }
+
+    QTextStream out(&file);
+
+    for(int i = 0; i < ROW; ++i)
+    {
+        for(int j = 0;  j < COL; ++j)
+        {
+            out << chess[i][j].type << ' ';
+        }
+    }
+    //out << "hello world";
+    out << Player;
+
+    file.close();
+}
+
+void ChessMap::infoChessMap()
+{
+    QFile file("ChessMap.txt");
+    if(!file.open(QFile::ReadOnly))
+    {
+        return;
+    }
+    QTextStream in(&file);
+
+    for(int i = 0; i < ROW * COL; ++i)
+    {
+        in >> debug[i];
+    }
+
+    QString temp;
+    in >> temp;
+    Player = temp.toInt();
+
+    //std::cout << Player << std::endl;
+
+    file.close();
+
+
+
+    //std::cout << chessInfo << std::endl;
+
+    for(int i = 0; i < ROW; ++i)
+    {
+        for(int j = 0; j < COL; ++j)
+        {
+            //            QByteArray temp = debug[i * COL + j].toLatin1();
+
+            //            char* chessInfo = temp.data();
+            chess[i][j].type = debug[i * COL + j].toInt();//(chessInfo[i * COL + j] - '0');
+            //std::cout << chessMap.chess[i][j].type << " ";
+        }
+        //std::cout << std::endl;
     }
 }

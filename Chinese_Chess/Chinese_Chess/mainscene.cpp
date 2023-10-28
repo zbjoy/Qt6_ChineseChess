@@ -10,62 +10,33 @@ MainScene::MainScene(QWidget *parent)
 {
     ui->setupUi(this);
 
+    chessMap.infoChessMap();
+
     iniUI();
 
-    saveChessMap();
+    //saveChessMap();
+    //chessMap.saveChessMap();
 
-    infoChessMap();
+    //infoChessMap();
 
-    debugChessMap();
+    //debugChessMap();
 }
 
-void MainScene::debugChessMap()
-{
-    for(int i = 0; i < ROW; ++i)
-    {
-        for(int j = 0; j < COL; ++j)
-        {
-            std::cout << chessMap.chess[i][j].type << " ";
-        }
-        std::cout << std::endl;
-    }
+//void MainScene::debugChessMap()
+//{
+//    for(int i = 0; i < ROW; ++i)
+//    {
+//        for(int j = 0; j < COL; ++j)
+//        {
+//            std::cout << chessMap.chess[i][j].type << " ";
+//        }
+//        std::cout << std::endl;
+//    }
 
-    qDebug() << debug;// << std::endl;
-}
+//    qDebug() << debug;// << std::endl;
+//}
 
-void MainScene::saveChessMap()
-{
-//    QFile* File_ChessMap = new QFile(QApplication::applicationDirPath() + "/ChessMap.txt");
-//    File_ChessMap->open(QIODevice::WriteOnly);
 
-//    File_ChessMap->write("hello", sizeof(ChessMap));
-
-//    File_ChessMap->close();
-
-    QFile file("ChessMap.txt");
-    if(!file.open(QFile::WriteOnly))
-    {
-        return;
-    }
-
-    QTextStream out(&file);
-    out << "hello world";
-
-    file.close();
-}
-
-void MainScene::infoChessMap()
-{
-    QFile file("ChessMap.txt");
-    if(!file.open(QFile::ReadOnly))
-    {
-        return;
-    }
-    QTextStream in(&file);
-    in >> debug;
-
-    file.close();
-}
 
 void MainScene::iniUI()
 {
@@ -76,14 +47,14 @@ void MainScene::iniUI()
     mainImage->setGeometry(0, 25, 500, 700);
     mainImage->setPixmap(QPixmap(":/res/MainScene.jpg").scaled(500, 730));
 
-    MyPushButton* btn_GoPlayScene = new MyPushButton(":/res/Start1.jpg", 100, 85, ":/res/Start2.jpg");
-    MyPushButton* btn_ExitGame = new MyPushButton(":/res/MainExit.png", 100, 85);
+    MyPushButton* btn_GoPlayScene = new MyPushButton(":/res/MainStart.png", 120, 85, ":/res/Start2.jpg");
+    MyPushButton* btn_ExitGame = new MyPushButton(":/res/MainExit.png", 120, 85, ":/res/Exit2.jpg");
 
     btn_GoPlayScene->setParent(this);
-    btn_GoPlayScene->move(200, 475);
+    btn_GoPlayScene->move(185, 450);
 
     btn_ExitGame->setParent(this);
-    btn_ExitGame->move(200, 555);
+    btn_ExitGame->move(185, 530);
 
     QMenuBar* bar = menuBar();
     setMenuBar(bar);
@@ -96,7 +67,7 @@ void MainScene::iniUI()
         this->close();
     });
 
-    PlayScene* playscene = new PlayScene;
+    PlayScene* playscene = new PlayScene(chessMap);
     connect(btn_GoPlayScene, MyPushButton::clicked, [=](){
         btn_GoPlayScene->zoom1();
         btn_GoPlayScene->zoom2();
@@ -104,6 +75,13 @@ void MainScene::iniUI()
         QTimer::singleShot(500, this, [=](){
             this->hide();
             playscene->show();
+        });
+    });
+
+    connect(playscene, PlayScene::PlaySceneBack, [=](){
+        QTimer::singleShot(500, this, [=](){
+            playscene->hide();
+            this->show();
         });
     });
 
@@ -115,6 +93,8 @@ void MainScene::iniUI()
             this->close();
         });
     });
+
+
 }
 
 MainScene::~MainScene()
