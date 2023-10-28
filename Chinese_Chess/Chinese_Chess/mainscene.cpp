@@ -12,7 +12,7 @@ MainScene::MainScene(QWidget *parent)
 
     chessMap.infoChessMap();
 
-    iniUI();
+    iniUI(); //初始化界面
 
     //saveChessMap();
     //chessMap.saveChessMap();

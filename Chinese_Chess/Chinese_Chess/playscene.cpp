@@ -125,11 +125,11 @@ void PlayScene::paintEvent(QPaintEvent * e)
     painter.setBrush(color);
     painter.drawRect(0, 0, 800, 800);
 
-    GameDraw(painter);
+    GameDraw(painter); //参考
 
     e->accept();
 }
-void PlayScene::GameDraw(QPainter& painter)
+void PlayScene::GameDraw(QPainter& painter)   //参数和思路是借鉴b站视频
 {
     QPen pen;
     pen.setColor(QColor(Qt::black));
@@ -281,7 +281,7 @@ void PlayScene::ChessCheck()
                                     ChessPainter.setBrush(Qt::red);
                                     //ChessPainter.drawEllipse(QPoint(INTERVAL + j1 * CHESS_GRID_SIZE, INTERVAL + i1 * CHESS_GRID_SIZE), 5, 5);
                                     //std::cout << "chess[" << i1 << "][" << j1 << "] ";
-                                    qDebug() << "chess[" << i1 << "][" << j1 << "] ";
+                                    //qDebug() << "chess[" << i1 << "][" << j1 << "] ";
                                 }
 //                                std::cout << "chess[" << i1 << "][" << j1 << "] ";
                                 ChessPainter.drawEllipse(QPoint(INTERVAL + j1 * CHESS_GRID_SIZE, INTERVAL + i1 * CHESS_GRID_SIZE), 5, 5);

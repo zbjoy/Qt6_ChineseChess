@@ -35,17 +35,17 @@ public:
 
     bool ChessMove(int i, int j);
 
-    bool isCheckMate();
+    bool isCheckMate(); //判断将军
 
     void ChessReturn(); //悔棋
 
-    bool isDeadlyStrike();
+    bool isDeadlyStrike(); //判断绝杀
 
     QLabel* winLabel; //胜利图片
 
-    QStack<ChessMap> chessBack;
+    QStack<ChessMap> chessBack; //悔棋
 
-    QRadioButton* btn_Complex;
+    QRadioButton* btn_Complex; //添加将军声音和绝杀
 
     QMediaPlayer* checkmateSound; //将军的声音
 
@@ -55,7 +55,7 @@ public:
 
     QMediaPlayer* deadlyStrikeSound; //绝杀的声音
 
-    int dead;
+    int dead; //记录是否绝杀来判断游戏是否结束
 
     ChessMap chessMap;
 

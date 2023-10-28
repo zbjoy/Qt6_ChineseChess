@@ -21,6 +21,16 @@
 
 #endif
 
+/*
+
+0 无
+
+红方： 1 兵     2 炮		3 车         4 马		5 相		    6 士		     7 帅
+
+黑方： 8 卒	   9 炮		10 车        11 马		12 象		13 士		14 将
+
+*/
+
 class Chess
 {
 public:
@@ -49,7 +59,7 @@ public:
 
     Chess chess[ROW][COL];
 
-    QString debug[ROW * COL];
+    QString debug[ROW * COL]; //记录从Chess.txt中读取出的数据
 };
 
 #endif // CHESS_H

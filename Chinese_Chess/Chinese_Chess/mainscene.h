@@ -41,12 +41,12 @@ public:
 
     void iniUI();
 
-    void debugChessMap();
+    //void debugChessMap();
 
     ChessMap chessMap;
 
     //Chess ChessMap[ROW][COL];
-    QString debug[ROW * COL];
+    //QString debug[ROW * COL];
 
     ~MainScene();
 
